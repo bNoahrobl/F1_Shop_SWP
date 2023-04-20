@@ -1,23 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { Product } from './product.model';
+import { ProductService } from './product.service';
 
-import { LandingPageComponent } from './landing-page.component';
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
+})
+export class ProductListComponent implements OnInit {
+  products: Product[] = [];
 
-describe('LandingPageComponent', () => {
-  let component: LandingPageComponent;
-  let fixture: ComponentFixture<LandingPageComponent>;
+  constructor(private productService: ProductService) {}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LandingPageComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(LandingPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit() {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
+    });
+  }
+}
