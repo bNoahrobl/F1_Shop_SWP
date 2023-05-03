@@ -14,7 +14,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule.forRoot([
+      {path: '', component: LandingPageComponent},
+      {path: 'search', component:AppComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
