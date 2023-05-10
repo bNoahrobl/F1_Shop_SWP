@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule } from '@angular/router';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductTemplateComponent } from './product-template/product-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ProductListComponent,
+    ProductTemplateComponent
   ],
   imports: [
     BrowserModule,
