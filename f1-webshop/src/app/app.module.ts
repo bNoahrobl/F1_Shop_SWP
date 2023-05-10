@@ -7,13 +7,15 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductTemplateComponent } from './product-template/product-template.component';
+import { ProductModelComponent } from './product-model/product-model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     ProductListComponent,
-    ProductTemplateComponent
+    ProductTemplateComponent,
+    ProductModelComponent
   ],
   imports: [
     BrowserModule,
