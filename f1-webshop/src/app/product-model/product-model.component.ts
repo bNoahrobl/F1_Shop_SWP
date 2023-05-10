@@ -7,7 +7,7 @@ import { Input, Component } from '@angular/core';
   styleUrls: ['./product-model.component.css']
 })
 export class ProductModelComponent {
-  @Input() item = 'Product';
+  
 }
 export interface Product {
   id: number;

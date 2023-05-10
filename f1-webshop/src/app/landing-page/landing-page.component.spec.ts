@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from './product.model';
-import { ProductService } from './product.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-list',
@@ -8,6 +6,8 @@ import { ProductService } from './product.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class ProductListComponent implements OnInit {
+  @Input() Product: any;
+
   products: Product[] = [];
 
   constructor(private productService: ProductService) {}

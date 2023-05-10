@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Product } from './product.model';
+import { Injectable, Input } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  @Input() Product = '';
   private products: Product[] = [
     {
       id: 1,
