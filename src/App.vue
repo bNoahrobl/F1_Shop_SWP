@@ -330,5 +330,7 @@ export default {
   .div.product-price
   {
     align-items: center;
+    justify-items: center;
+    margin: auto;
   }
 </style>
