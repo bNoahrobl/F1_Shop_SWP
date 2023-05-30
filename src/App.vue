@@ -42,7 +42,7 @@
 <script>
  import image from "./assets/Astonaloshirt.jpg"
  import image2 from "./assets/AloCap.jpg"
- import image3 from "./assets/Astonmartin.jpg"
+ import image3 from "./assets/AloCapB.jpg"
  import image4 from "./assets/haas-vf-23-1.jpg"
  import image5 from "./assets/AT-023.png"
  import image6 from "./assets/FW-44.jpg"
@@ -57,7 +57,7 @@ export default {
       products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img:image },
         { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: image2 },
-        { id: 3, name: 'AMR-22', price: 800, img: image3 },
+        { id: 3, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Black', price: 44.95, img: image3 },
         { id: 4, name: 'VF-23', price: 1200, img: image4 },
         { id: 5, name: 'AT-02', price: 750, img: image5 },
         { id: 6, name: 'FW-44', price: 10, img: image6 },
