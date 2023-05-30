@@ -5,10 +5,11 @@
         <div class="logoWrapper">
             
         </div>
-        <ul class="navigation">
-          <li class="parent"><a class="link" href="#">Shop</a></li>
-
-        </ul>
+        <div id="nav">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </div>
+        <router-view/>
       </nav>
       <h2>Name</h2>
       <input type="text" v-model="name" class="input">
