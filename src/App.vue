@@ -328,7 +328,7 @@ export default {
     margin-bottom: 10px;
     border: 1px solid gray;
   }
-  .div.product-price
+  .product-price
   {
     align-items: center;
     justify-items: center;
