@@ -1,7 +1,16 @@
 <template>
   <div class="alles">
     <div class="head">
-    <h2>Name</h2>
+      <nav class="navigationWrapper">
+        <div class="logoWrapper">
+          <span class="stylish">Stylish</span>
+          <span class="logo">Logo</span>
+        </div>
+        <ul class="navigation">
+          <li class="parent"><a class="link" href="#">Shop</a></li>
+        </ul>
+      </nav>
+      <h2>Name</h2>
       <input type="text" v-model="name" class="input">
       <button @click="fetchProducts()" class="Login">Login</button>
       <h2>Products</h2>
@@ -38,6 +47,7 @@
     </div>
     
   </div>
+  <login-page></login-page>
 </template>
 <script>
  import image from "./assets/Astonaloshirt.jpg"
@@ -51,7 +61,14 @@
  import image9 from "./assets/c42.jpg"
  import image10 from "./assets/MCL34.jpg"
 
+ import LoginPage from './components/LoginPage.vue'
+
+
 export default {
+  components: {
+    LoginPage,
+  },
+  
   data() {
     return {
       products: [
@@ -167,6 +184,7 @@ export default {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-weight: 950;
   background: lightgrey;
+
 }
 .head
 {
@@ -334,4 +352,59 @@ export default {
     justify-items: center;
     margin: auto;
   }
+
+  .logoWrapper {
+    display: flex;
+  }
+
+    .stylish {
+      font-weight: bold;
+    }
+
+    .logo {
+      padding-left: 4px;
+      color: #ea4f4c;
+    }
+
+  .navigationWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #222;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+  width: 100%;
+}
+
+  .navigation {
+    display: flex;
+    list-style-type: none;
+  }
+  li {
+      opacity: 1;
+      list-style-type: none;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+  }
+  .parent {
+      padding: 0 10px;
+      cursor: pointer;
+  }
+  .link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        color: white;
+  }
+  .link:hover {
+    color: #ea4f4c;
+  }
+
 </style>
