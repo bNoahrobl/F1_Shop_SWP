@@ -3,11 +3,11 @@
     <div class="head">
       <nav class="navigationWrapper">
         <div class="logoWrapper">
-          <span class="stylish">Stylish</span>
-          <span class="logo">Logo</span>
+            
         </div>
         <ul class="navigation">
           <li class="parent"><a class="link" href="#">Shop</a></li>
+
         </ul>
       </nav>
       <h2>Name</h2>
@@ -47,7 +47,6 @@
     </div>
     
   </div>
-  <login-page></login-page>
 </template>
 <script>
  import image from "./assets/Astonaloshirt.jpg"
@@ -63,12 +62,12 @@
  import image11 from "./assets/MCLCap.jpg"
  import image12 from "./assets/BeanMCL.jpg"
 
- import LoginPage from './components/LoginPage.vue'
+
 
 
 export default {
   components: {
-    LoginPage,
+    
   },
   
   data() {
@@ -360,15 +359,6 @@ export default {
   .logoWrapper {
     display: flex;
   }
-
-    .stylish {
-      font-weight: bold;
-    }
-
-    .logo {
-      padding-left: 4px;
-      color: #ea4f4c;
-    }
 
   .navigationWrapper {
   position: relative;
