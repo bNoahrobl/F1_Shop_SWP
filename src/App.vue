@@ -1,4 +1,6 @@
+
 <template>
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles.css">
   <div class="alles">
     <div class="head">
       <nav class="navigationWrapper">
@@ -29,25 +31,8 @@
         <button @click="addToCart(product)" class="add-to-cart-btn">Add to Cart</button>
       </div>
     </div>
-    <div class="cart-container">
-      <h2>Shopping Cart</h2>
-      <h3>Hello {{confirmedName}}</h3>
-      <ul>
     
-        <li v-for="cartItem in cart" :key="cartItem.id" class="cart-item">
-          
-          <div class="cart-item-name">{{ cartItem.name }}</div>
-          <div class="cart-item-price">{{ cartItem.price }} €</div>
-          
-        </li>
-      </ul>
-      
-      <h3 class="total">Total: {{ total }}€</h3>
-      <div class="buttons-bottom">
-      <button @click="checkout()" class="checkout-btn">Save Cart</button>
-      <button @click="cancel()" class="cancel-btn">Delete Cart</button>
-    </div>
-    </div>
+    
     
   </div>
 </template>
