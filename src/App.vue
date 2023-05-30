@@ -40,8 +40,8 @@
   </div>
 </template>
 <script>
- import image from "./assets/Alpine.jpeg"
- import image2 from "./assets/Redbull.jpg"
+ import image from "./assets/Astonaloshirt.jpg"
+ import image2 from "./assets/AloCap.jpg"
  import image3 from "./assets/Astonmartin.jpg"
  import image4 from "./assets/haas-vf-23-1.jpg"
  import image5 from "./assets/AT-023.png"
@@ -55,8 +55,8 @@ export default {
   data() {
     return {
       products: [
-        { id: 1, name: 'A-522', price: 900, img:image },
-        { id: 2, name: 'RB-7', price: 700, img: image2 },
+        { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img:image },
+        { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: image2 },
         { id: 3, name: 'AMR-22', price: 800, img: image3 },
         { id: 4, name: 'VF-23', price: 1200, img: image4 },
         { id: 5, name: 'AT-02', price: 750, img: image5 },
@@ -215,8 +215,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 500px;
-  height: 400px;
+  width: auto;
+  height: auto;
   padding: 10px;
   margin-bottom: 10px;
   background: whitesmoke;
@@ -299,7 +299,7 @@ export default {
   }
   img {
     width: 490px;
-    object-fit: cover;
+    object-fit:scale-down;
     transition: all 0.3s ease;
     cursor:zoom-in;
     
@@ -326,5 +326,9 @@ export default {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid gray;
+  }
+  .div.product-price
+  {
+    align-items: center;
   }
 </style>
