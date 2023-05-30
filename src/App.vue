@@ -10,13 +10,14 @@
           <router-link to="/about">About</router-link> | 
           <router-link to="/shop">Shop</router-link>
         </div>
-        <router-view/>
       </nav>
+      <router-view/>
       <h2>Name</h2>
       <input type="text" v-model="name" class="input">
       <button @click="fetchProducts()" class="Login">Login</button>
       <h2>Products</h2>
     </div>
+
     <div class="products-container">
       
       <div v-for="product in products" :key="product.id" class="product-item">

@@ -1,9 +1,15 @@
 <template>
-  <div v-if="showLoginPage">
-    <h2>Login</h2>
-    <input type="text" v-model="username" placeholder="Username">
-    <input type="password" v-model="password" placeholder="Password">
-    <button @click="login">Login</button>
+ <div class="login-page">
+    <h2 class="login-title">Login</h2>
+    <div class="input-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" v-model="username" class="input-field" placeholder="Username">
+    </div>
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" v-model="password" class="input-field" placeholder="Password">
+    </div>
+    <button class="login-button" @click="login">Login</button>
     <div v-if="error" class="error">{{ error }}</div>
   </div>
 </template>
@@ -14,8 +20,7 @@ export default {
     return {
       username: '',
       password: '',
-      error: '',
-      showLoginPage: false
+      error: ''
     };
   },
   methods: {
@@ -33,51 +38,63 @@ export default {
 </script>
 
 <style scoped>
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-}
-
-#app {
-  width: 300px;
-  padding: 20px;
+.login-page {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.login-title {
   text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
+  color: #333;
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="password"] {
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.input-group {
+  margin-bottom: 20px;
 }
 
-button {
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.input-field {
+  width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
   border: none;
-  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #45a049;
 }
 
 .error {
   color: red;
-  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
 }
-
 </style>
