@@ -230,6 +230,7 @@ export default {
   
   .product-price {
     font-style: italic;
+    text-align: center;
   }
   
   .add-to-cart-btn {
