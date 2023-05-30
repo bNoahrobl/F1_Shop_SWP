@@ -49,7 +49,9 @@
  import image7 from "./assets/Verstappen.jpg"
  import image8 from "./assets/JacketRedbull.jpg"
  import image9 from "./assets/RBRucksack.jpg"
- import image10 from "./assets/MCL34.jpg"
+ import image10 from "./assets/MCLShirt.jpg"
+ import image11 from "./assets/MCLCap.jpg"
+ import image12 from "./assets/BeanMCL.jpg"
 
 export default {
   data() {
@@ -64,7 +66,9 @@ export default {
         { id: 7, name: 'Official Teamline Max Verstappen Poloshirt', price: 84.95, img: image7 },
         { id: 8, name: 'Official Teamline Softshell-Jacke', price: 139.95, img: image8 },
         { id: 9, name: 'Großer Official Teamline Koffer', price: 289.95, img: image9 },
-        { id: 10, name: 'MCL34', price: 740, img: image10 },
+        { id: 10, name: 'MENS McLAREN REPLICA POLO SHIRT', price: 76.95, img: image10 },
+        { id: 11, name: 'REPLICA TEAM CASTORE x McLAREN 9FORTY SNAPBACK - NEW ERA', price: 43.95, img: image11 },
+        { id: 12, name: 'ESSENTIAL CUFF BEANIE - NEW ERA', price: 27.95, img: image12 },
       ],
       cart: [],
       name: '',
