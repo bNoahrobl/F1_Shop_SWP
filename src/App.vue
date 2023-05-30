@@ -170,6 +170,8 @@ export default {
 
  
 </script>
+
+
 <style scoped>
 .alles{
   font-family: "Comic Sans MS", "Comic Sans", cursive;
