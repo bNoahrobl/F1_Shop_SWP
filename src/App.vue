@@ -52,14 +52,16 @@
 <script>
  import image from "./assets/Astonaloshirt.jpg"
  import image2 from "./assets/AloCap.jpg"
- import image3 from "./assets/Astonmartin.jpg"
- import image4 from "./assets/haas-vf-23-1.jpg"
- import image5 from "./assets/AT-023.png"
- import image6 from "./assets/FW-44.jpg"
- import image7 from "./assets/F1-75.jpg"
- import image8 from "./assets/W12.jpg"
- import image9 from "./assets/c42.jpg"
- import image10 from "./assets/MCL34.jpg"
+ import image3 from "./assets/AloCapB.jpg"
+ import image4 from "./assets/polo-bwt-alpine.jpg"
+ import image5 from "./assets/AlpineCap.jpg"
+ import image6 from "./assets/AlpineJacket.jpg"
+ import image7 from "./assets/Verstappen.jpg"
+ import image8 from "./assets/JacketRedbull.jpg"
+ import image9 from "./assets/RBRucksack.jpg"
+ import image10 from "./assets/MCLShirt.jpg"
+ import image11 from "./assets/MCLCap.jpg"
+ import image12 from "./assets/BeanMCL.jpg"
 
  import LoginPage from './components/LoginPage.vue'
 
@@ -74,14 +76,16 @@ export default {
       products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img:image },
         { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: image2 },
-        { id: 3, name: 'AMR-22', price: 800, img: image3 },
-        { id: 4, name: 'VF-23', price: 1200, img: image4 },
-        { id: 5, name: 'AT-02', price: 750, img: image5 },
-        { id: 6, name: 'FW-44', price: 10, img: image6 },
-        { id: 7, name: 'F1-75', price: 800, img: image7 },
-        { id: 8, name: 'W12', price: 900, img: image8 },
-        { id: 9, name: 'C42', price: 700, img: image9 },
-        { id: 10, name: 'MCL34', price: 740, img: image10 },
+        { id: 3, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Black', price: 44.95, img: image3 },
+        { id: 4, name: 'BWT ALPINE F1® Team Polo Black', price: 85.00, img: image4 },
+        { id: 5, name: 'BWT ALPINE F1® Team NEW ERA iridescent marine cap', price: 43.00, img: image5 },
+        { id: 6, name: 'BWT ALPINE F1® Team Black Jacket', price: 250.00, img: image6 },
+        { id: 7, name: 'Official Teamline Max Verstappen Poloshirt', price: 84.95, img: image7 },
+        { id: 8, name: 'Official Teamline Softshell-Jacke', price: 139.95, img: image8 },
+        { id: 9, name: 'Großer Official Teamline Koffer', price: 289.95, img: image9 },
+        { id: 10, name: 'MENS McLAREN REPLICA POLO SHIRT', price: 76.95, img: image10 },
+        { id: 11, name: 'REPLICA TEAM CASTORE x McLAREN 9FORTY SNAPBACK - NEW ERA', price: 43.95, img: image11 },
+        { id: 12, name: 'ESSENTIAL CUFF BEANIE - NEW ERA', price: 27.95, img: image12 },
       ],
       cart: [],
       name: '',
