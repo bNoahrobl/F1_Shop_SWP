@@ -3,11 +3,12 @@
     <div class="head">
       <nav class="navigationWrapper">
         <div class="logoWrapper">
-            
+
         </div>
         <div id="nav">
           <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>
+          <router-link to="/about">About</router-link> | 
+          <router-link to="/shop">Shop</router-link>
         </div>
         <router-view/>
       </nav>
