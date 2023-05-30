@@ -46,9 +46,9 @@
  import image4 from "./assets/polo-bwt-alpine.jpg"
  import image5 from "./assets/AlpineCap.jpg"
  import image6 from "./assets/AlpineJacket.jpg"
- import image7 from "./assets/F1-75.jpg"
- import image8 from "./assets/W12.jpg"
- import image9 from "./assets/c42.jpg"
+ import image7 from "./assets/Verstappen.jpg"
+ import image8 from "./assets/JacketRedbull.jpg"
+ import image9 from "./assets/RBRucksack.jpg"
  import image10 from "./assets/MCL34.jpg"
 
 export default {
@@ -61,9 +61,9 @@ export default {
         { id: 4, name: 'BWT ALPINE F1® Team Polo Black', price: 85.00, img: image4 },
         { id: 5, name: 'BWT ALPINE F1® Team NEW ERA iridescent marine cap', price: 43.00, img: image5 },
         { id: 6, name: 'BWT ALPINE F1® Team Black Jacket', price: 250.00, img: image6 },
-        { id: 7, name: 'F1-75', price: 800, img: image7 },
-        { id: 8, name: 'W12', price: 900, img: image8 },
-        { id: 9, name: 'C42', price: 700, img: image9 },
+        { id: 7, name: 'Official Teamline Max Verstappen Poloshirt', price: 84.95, img: image7 },
+        { id: 8, name: 'Official Teamline Softshell-Jacke', price: 139.95, img: image8 },
+        { id: 9, name: 'Großer Official Teamline Koffer', price: 289.95, img: image9 },
         { id: 10, name: 'MCL34', price: 740, img: image10 },
       ],
       cart: [],
