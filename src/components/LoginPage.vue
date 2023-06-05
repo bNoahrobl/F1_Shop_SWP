@@ -1,5 +1,5 @@
 <template>
- <div class="login-page">
+  <div class="login-page">
     <h2 class="login-title">Login</h2>
     <div class="input-group">
       <label for="username">Username:</label>
@@ -15,6 +15,9 @@
 </template>
 
 <script>
+//import { ref } from 'vue';
+import { getDatabase, ref as dbRef, get } from 'firebase/database';
+
 export default {
   data() {
     return {
@@ -24,13 +27,22 @@ export default {
     };
   },
   methods: {
-    login() {
-      if (this.username === 'admin' && this.password === 'password') {
-        // Successful login
-        alert('Login successful!');
-      } else {
-        // Failed login
-        this.error = 'Invalid username or password';
+    async login() {
+      try {
+        const database = getDatabase();
+        const snapshot = await get(dbRef(database, 'users/' + this.username));
+        const userData = snapshot.val();
+        
+        if (userData && userData.password === this.password) {
+          // Successful login
+          alert('Login successful!');
+        } else {
+          // Failed login
+          this.error = 'Invalid username or password';
+        }
+      } catch (error) {
+        console.error(error);
+        this.error = 'An error occurred during login' + error;
       }
     }
   }
