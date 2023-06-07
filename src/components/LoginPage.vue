@@ -10,41 +10,48 @@
       <input type="password" id="password" v-model="password" class="input-field" placeholder="Password">
     </div>
     <button class="login-button" @click="login">Login</button>
+    <div v-if="isLoggedIn">
+      <router-link to="/about"></router-link>
+    </div>
     <div v-if="error" class="error">{{ error }}</div>
   </div>
 </template>
 
 <script>
-//import { ref } from 'vue';
-import { getDatabase, ref as dbRef, get } from 'firebase/database';
-
 export default {
   data() {
     return {
+      error: '',
       username: '',
       password: '',
-      error: ''
+      users: null,
+      isLoggedIn: false,
     };
   },
   methods: {
     async login() {
       try {
-        const database = getDatabase();
-        const snapshot = await get(dbRef(database, 'users/' + this.username));
-        const userData = snapshot.val();
-        
-        if (userData && userData.password === this.password) {
+        const response = await fetch('https://f1-shop-588b7-default-rtdb.europe-west1.firebasedatabase.app/users.json');
+        const data = await response.json();
+
+        const dataArray = Object.values(data); // Convert the response data into an array
+
+        const user = dataArray.find(u => u.username === this.username && u.password === this.password);
+
+        if (user) {
           // Successful login
           alert('Login successful!');
+          this.isLoggedIn = true;
+          this.$router.push('/about');
         } else {
           // Failed login
           this.error = 'Invalid username or password';
         }
       } catch (error) {
         console.error(error);
-        this.error = 'An error occurred during login' + error;
+        this.error = 'An error occurred during login: ' + error;
       }
-    }
+    },
   }
 };
 </script>
