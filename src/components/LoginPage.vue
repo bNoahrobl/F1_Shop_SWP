@@ -58,13 +58,22 @@ export default {
 
 <style scoped>
 .login-page {
-  max-width: 400px;
   margin: 0 auto;
   padding: 30px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f2f2f2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Set the width to a percentage value */
+  max-width: 400px; /* Set a maximum width for smaller screens */
+}
+
+/* Center the login page horizontally */
+@media (min-width: 768px) {
+  .login-page {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .login-title {
@@ -117,3 +126,4 @@ label {
   font-size: 14px;
 }
 </style>
+
