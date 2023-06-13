@@ -1,115 +1,111 @@
 <template>
-    <div class="shopping-cart">
-      <h2>Shopping Cart</h2>
-      <div v-if="cart.length === 0" class="empty-cart">Your cart is empty</div>
-      <div v-else>
-        <div v-for="item in cart" :key="item.id" class="cart-item">
-          <div class="item-info">
-            <img :src="require('@/assets/' + item.img)" alt="product image">
-            <div class="item-details">
-              <div class="item-name">{{ item.name }}</div>
-              <div class="item-price">{{ item.price }} €</div>
-            </div>
-          </div>
-          <button @click="removeFromCart(item)" class="remove-btn">Remove</button>
-        </div>
+  <div class="cart-page">
+    <h2 class="cart-title">Shopping Cart</h2>
+    <div v-if="filteredCart.length === 0" class="empty-cart-message">
+      Your cart is empty.
+    </div>
+    <div v-else>
+      <div v-for="item in filteredCart" :key="item.id" class="cart-item">
+        <div class="item-name">{{ item.name }}</div>
+        <div class="item-price">{{ item.price }} €</div>
+        <button @click="removeFromCart(item)" class="remove-from-cart-btn">Remove</button>
+      </div>
+      <div class="cart-summary">
         <div class="cart-total">Total: {{ calculateTotal() }} €</div>
-        <div class="checkout-buttons">
-          <button @click="checkout" class="checkout-btn">Checkout</button>
-          <button @click="cancel" class="cancel-btn">Cancel</button>
-        </div>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      cart: {
-        type: Array,
-        default: () => []
+    <button class="checkout-button" @click="checkout">Checkout</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      filteredCart: [],
+      cart: [],
+      name: '',
+      confirmedName: ''
+    };
+  },
+  created() {
+    this.fetchProducts();
+  },
+  methods: {
+    fetchProducts() {
+      this.confirmedName = this.name;
+      fetch("https://vue-best-content-do-not-open-default-rtdb.europe-west1.firebasedatabase.app/checkout.json")
+        .then((response) => response.json())
+        .then((responseData) => {
+          const results = [];
+
+          if (!responseData) {
+            this.devices = results;
+            return;
+          }
+
+          const newData = Object.entries(responseData);
+
+          for (let i = 0; i < newData.length; i++) {
+            if (this.name === newData[i][1][newData[i][1].length - 1]) {
+              for (let j = 0; j < newData[i][1].length - 1; j++) {
+                results.push({
+                  id: newData[i][1][j].id,
+                  name: newData[i][1][j].name,
+                  price: newData[i][1][j].price,
+                });
+              }
+            }
+          }
+
+          this.filteredCart = results;
+
+          for (let x = 0; x < results.length; x++) {
+            this.cart.push(results[x]);
+          }
+
+          console.log(this.cart);
+        })
+        .catch((error) => {
+          console.error("An error occurred while fetching products:", error);
+        });
+    },
+    removeFromCart(item) {
+      const index = this.filteredCart.findIndex(i => i.id === item.id);
+      if (index !== -1) {
+        this.filteredCart.splice(index, 1);
       }
     },
-  
-    methods: {
-      removeFromCart(item) {
-        const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
-        if (index !== -1) {
-          this.cart.splice(index, 1);
-        }
-      },
-  
-      calculateTotal() {
-        return this.cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-      },
-  
-      checkout() {
-        this.$emit('checkout');
-      },
-  
-      cancel() {
-        this.$emit('cancel');
-      },
+    calculateTotal() {
+      return this.filteredCart.reduce((total, item) => total + item.price, 0);
     },
-  };
-  </script>
-  
-  <style scoped>
-  .shopping-cart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    checkout() {
+      if (this.cart.length > 0) {
+        this.cart.push(this.name);
+        // Perform checkout here, for example by sending the cart data to an API
+        fetch("https://vue-best-content-do-not-open-default-rtdb.europe-west1.firebasedatabase.app/checkout.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(this.cart)
+        })
+        .then(response => response.json())
+          .then(() => {
+            // Handle the response from the API if needed
+          })
+          .catch(error => {
+            console.error("An error occurred during checkout:", error);
+          });
+
+        this.cart = [];
+        this.confirmedName = '';
+      }
+    }
   }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .empty-cart {
-    margin-bottom: 20px;
-  }
-  
-  .cart-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .item-info {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .item-details {
-    margin-left: 10px;
-  }
-  
-  .item-name {
-    font-weight: bold;
-  }
-  
-  .remove-btn {
-    margin-left: 10px;
-  }
-  
-  .cart-total {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .checkout-buttons {
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  .checkout-btn {
-    margin-right: 10px;
-  }
-  
-  .cancel-btn {
-    background-color: #ccc;
-    color: white;
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+/* Existing styles... */
+</style>

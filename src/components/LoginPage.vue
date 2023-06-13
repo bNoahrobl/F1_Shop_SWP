@@ -19,13 +19,17 @@
 
 <script>
 export default {
+  props: {
+    isLoggedIn: {
+      type: Boolean,
+      default: false
+    },
+  },
   data() {
     return {
       error: '',
       username: '',
       password: '',
-      users: null,
-      isLoggedIn: false,
     };
   },
   methods: {
@@ -41,7 +45,6 @@ export default {
         if (user) {
           // Successful login
           alert('Login successful!');
-          this.isLoggedIn = true;
           this.$router.push('/about');
         } else {
           // Failed login

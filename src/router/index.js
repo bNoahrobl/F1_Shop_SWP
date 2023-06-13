@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import SignUpView from '../views/SignUpView.vue';
 import LogInView from '../views/LogInView.vue';
+import ShoppingCartView from '../views/ShoppingCartView.vue';
 
 const routes = [
   {
@@ -15,6 +16,12 @@ const routes = [
     name: 'signup',
     component: SignUpView,
     meta: { hideNavbar: true }
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: ShoppingCartView,
+    meta: { hideNavbar: false }
   },
   {
     path: '/about',

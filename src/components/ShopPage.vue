@@ -6,6 +6,7 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link> |
         <router-link to="/login">LogIn</router-link> |
+        <router-link to="/cart">Shopping Cart</router-link> |
         <router-link to="/signup">SignUp</router-link>
       </div>
     </nav>
@@ -19,6 +20,9 @@
         </div>
         <button @click="addToCart(product)" class="add-to-cart-btn">Add to Cart</button>
       </div>
+    </div>
+    <div v-if="isLoggedIn">
+      
     </div>
   </div>
   <div v-else>
@@ -41,9 +45,13 @@ import McLarenCap from "@/assets/MCLCap.jpg";
 import McLarenBeanie from "@/assets/BeanMCL.jpg";
 
 export default {
+  components: {
+
+  },
     data() {
       return {
         showNavbar: true,
+        isLoggedIn: false,
         products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img: Astonaloshirt },
         { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: AloCap },
