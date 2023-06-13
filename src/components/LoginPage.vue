@@ -24,6 +24,10 @@ export default {
       type: Boolean,
       default: false
     },
+    loggedInUsername: {
+      type: String,
+      default: ''
+    },
   },
   data() {
     return {
@@ -45,7 +49,8 @@ export default {
         if (user) {
           // Successful login
           alert('Login successful!');
-          this.$router.push('/about');
+          this.$router.push('/');
+          
         } else {
           // Failed login
           this.error = 'Invalid username or password';

@@ -11,6 +11,11 @@
       </div>
     </nav>
     <router-view/>
+    <div v-if="isLoggedIn">
+      <login-page @login-success="onLoginSuccess" />
+      <shop-page :loggedInUsername="loggedInUsername" v-if="loggedInUsername" />
+    </div>
+    <p v-if="loggedInUsername">Logged-in username: {{ loggedInUsername }}</p>
     <div class="products-container">
       <div v-for="product in products" :key="product.id" class="product-item">
         <img :src="product.img" alt="product image">
@@ -20,9 +25,6 @@
         </div>
         <button @click="addToCart(product)" class="add-to-cart-btn">Add to Cart</button>
       </div>
-    </div>
-    <div v-if="isLoggedIn">
-      
     </div>
   </div>
   <div v-else>
@@ -48,9 +50,12 @@ export default {
   components: {
 
   },
+  props: {
+  },
     data() {
       return {
         showNavbar: true,
+        loggedInUsername: '',
         isLoggedIn: false,
         products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img: Astonaloshirt },
@@ -81,6 +86,9 @@ export default {
       loadHome(){
         this.$router.push('/home');
       },
+      onLoginSuccess(username) {
+      this.loggedInUsername = username; // Set the logged-in username in the parent component
+    },
       addToCart(product) {
         console.log('Adding to cart:', product);
       },

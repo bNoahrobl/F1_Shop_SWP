@@ -49,17 +49,6 @@ router.beforeEach((to, _, next) => {
     next();
     return;
   }
-
-  if (to.name === 'home') {
-    if (to.matched[0].instances.default) {
-      to.matched[0].instances.default.showNavbar = true;
-    }
-  } else {
-    if (to.matched[0].instances.default) {
-      to.matched[0].instances.default.showNavbar = !to.meta.hideNavbar;
-    }
-  }
-
   next();
 });
 
