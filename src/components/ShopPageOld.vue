@@ -1,6 +1,16 @@
 <template>
-  <router-view></router-view>
+  <div class="products-container">
+      <div v-for="product in products" :key="product.id" class="product-item">
+        <img :src="product.img" alt="product image">
+        <div class="product-info">
+          <div class="product-name">{{ product.name }}</div>
+          <div class="product-price">{{ product.price }} €</div>
+        </div>
+        <button @click="addToCart(product)" class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
 </template>
+
 <script>
  import image from "./assets/Astonaloshirt.jpg"
  import image2 from "./assets/AloCap.jpg"
@@ -136,94 +146,146 @@ export default {
  
 </script>
 
-
 <style scoped>
-.alles{
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-weight: 950;
-  background: lightgrey;
-  overflow: hidden;
-  width: 100%;
+.input{
+  background-color: #62529c;
+        border: none;
+        color: #fff;
+        padding: 15px 30px;
+        text-decoration:dotted;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: all 0.3s ease ;
+        font-size: large;
 }
-.head
-{
+.input:hover{
+  background-color: grey;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-item {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-}
-.buttons-bottom{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: whitesmoke;
  
+  border: 1px solid gray;
 }
-  .logoWrapper {
-    display: flex;
+  
+  .product-name {
+    font-weight: bold;
   }
-.navigationWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  background-color: #222;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
-  color: white;
-  text-transform: uppercase;
-  overflow: hidden;
-  width: 100%;
-}
-
-.navigation {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  opacity: 1;
-  list-style-type: none;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.parent {
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  color: white;
-}
-
-.link:hover {
-  color: #ea4f4c;
-}
-
-.navigation-left,
-.navigation-right {
-  position: absolute;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.navigation-left {
-  left: 20px;
-}
-
-.navigation-right {
-  right: 20px;
-}
+  
+  .product-price {
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .add-to-cart-btn {
+    
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease
+  }
+  .add-to-cart-btn:hover{
+    background-color: blue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .checkout-btn {
+    width: 150px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 150px;
+    padding: 10px 20px;
+    transition: all 0.3s ease
+  }
+  
+  .checkout-btn:hover{
+    background-color: blue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .cancel-btn
+  {
+    width: 150px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    transition: all 0.3s ease
+  }
+  .cancel-btn:hover{
+    background-color: blue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .Login{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: magenta;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .Login:hover{
+    background-color: blue;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  img {
+    width: 490px;
+    object-fit:scale-down;
+    transition: all 0.3s ease;
+    cursor:zoom-in;
+    
+    
+  }
+  img:active{
+    transform: scale(2.5);
+    box-shadow: 0 4px 6px black;
+    position:absolute;
+    left: 44.5rem;
+    cursor:zoom-out;
+  }
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+  }
+  .product-price
+  {
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+  }
 </style>
-
-
