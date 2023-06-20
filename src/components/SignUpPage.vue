@@ -24,6 +24,7 @@
         error: '',
         username: '',
         password: '',
+        LoggedIn: false,
         users: null,
         isRegistered: false,
       };
@@ -46,6 +47,7 @@
             const newUser = {
               username: this.username,
               password: this.password,
+              LoggedIn: this.LoggedIn,
             };
   
             // Save new user to the database (Firebase example)

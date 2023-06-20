@@ -12,8 +12,7 @@
     </nav>
     <router-view/>
     <div v-if="isLoggedIn">
-      <login-page @login-success="onLoginSuccess" />
-      <shop-page :loggedInUsername="loggedInUsername" v-if="loggedInUsername" />
+      <shopping-cart :loggedInUsername="loggedInUsername" :addToCart="addToCart" v-if="loggedInUsername" />
     </div>
     <p v-if="loggedInUsername">Logged-in username: {{ loggedInUsername }}</p>
     <div class="products-container">
@@ -50,14 +49,13 @@ export default {
   components: {
 
   },
-  props: {
-  },
-    data() {
-      return {
-        showNavbar: true,
-        loggedInUsername: '',
-        isLoggedIn: false,
-        products: [
+  props: {},
+  data() {
+    return {
+      showNavbar: true,
+      loggedInUsername: '',
+      isLoggedIn: false,
+      products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img: Astonaloshirt },
         { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: AloCap },
         { id: 3, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Black', price: 44.95, img: AloCapB },
@@ -71,50 +69,55 @@ export default {
         { id: 11, name: 'McLaren F1® Lifestyle Cap', price: 39.95, img: McLarenCap },
         { id: 12, name: 'McLaren F1® Beanie', price: 34.95, img: McLarenBeanie },
       ],
-        name: "",
-      };
-    },
-    mounted() {
+      name: "",
+    };
+  },
+  mounted() {
     this.checkNavbarVisibility();
-    },
-    watch: {
-      '$route'() {
-        this.checkNavbarVisibility();
-      }
-    },
-    methods: {
-      loadHome(){
-        this.$router.push('/home');
-      },
-      onLoginSuccess(username) {
-      this.loggedInUsername = username; // Set the logged-in username in the parent component
-    },
-      addToCart(product) {
-        console.log('Adding to cart:', product);
-      },
-      checkNavbarVisibility() {
-        const hiddenRoutes = ['/login', '/signup'];
-        this.showNavbar = !hiddenRoutes.includes(this.$route.path);
+  },
+  watch: {
+    '$route'() {
+      this.checkNavbarVisibility();
     }
+  },
+  methods: {
+    loadHome() {
+      this.$router.push('/home');
     },
+    onLoginSuccess(username) {
+      this.loggedInUsername = username;
+    },
+    handleLoginSuccess(username) {
+      this.loggedInUsername = username;
+      this.isLoggedIn = true;
+    },
+    addToCart(product) {
+      console.log('Adding to cart:', product);
+    },
+    checkNavbarVisibility() {
+      const hiddenRoutes = ['/login', '/signup'];
+      this.showNavbar = !hiddenRoutes.includes(this.$route.path);
+    }
+  },
 };
 </script>
 
 <style scoped>
-.alles{
+.alles {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-weight: 950;
   background: lightgrey;
-
 }
+
 .products-container {
   display: flex;
-  flex-wrap: wrap ;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap:50px;
+  gap: 50px;
 }
+
 .product-item {
   display: flex;
   justify-content: space-between;
@@ -127,76 +130,80 @@ export default {
   background: whitesmoke;
   border: 1px solid gray;
 }
-.product-name {
-    font-weight: bold;
-  }
-  .product-price {
-    font-style: italic;
-    text-align: center;
-  }
-  
-  .add-to-cart-btn {
-    
-    padding: 10px 20px;
-    background-color: blue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease
-  }
-  .add-to-cart-btn:hover{
-    background-color: blue;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
 
-  img {
-    width: 490px;
-    object-fit:scale-down;
-    transition: all 0.3s ease;
-    cursor:zoom-in;
-    
-    
-  }
-  img:active{
-    transform: scale(2.5);
-    box-shadow: 0 4px 6px black;
-    position:absolute;
-    left: 44.5rem;
-    cursor:zoom-out;
-  }
-  li {
+.product-name {
+  font-weight: bold;
+}
+
+.product-price {
+  font-style: italic;
+  text-align: center;
+}
+
+.add-to-cart-btn {
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: blue;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  width: 490px;
+  object-fit: scale-down;
+  transition: all 0.3s ease;
+  cursor: zoom-in;
+}
+
+img:active {
+  transform: scale(2.5);
+  box-shadow: 0 4px 6px black;
+  position: absolute;
+  left: 44.5rem;
+  cursor: zoom-out;
+}
+
+li {
   opacity: 1;
   list-style-type: none;
   color: white;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
-.alles{
+
+.alles {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-weight: 950;
   background: lightgrey;
   overflow: hidden;
   width: 100%;
 }
-.head
-{
+
+.head {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.buttons-bottom{
+
+.buttons-bottom {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
-  
- 
 }
-  .logoWrapper {
-    display: flex;
-  }
+
+.logoWrapper {
+  display: flex;
+}
+
 .navigationWrapper {
   position: relative;
   display: flex;
@@ -216,14 +223,6 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-
-li {
-  opacity: 1;
-  list-style-type: none;
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
 }
 
 .parent {

@@ -24,16 +24,16 @@ export default {
       type: Boolean,
       default: false
     },
-    loggedInUsername: {
-      type: String,
-      default: ''
-    },
+    loginSuccess: {
+      type: Function,
+      required: true
+    }
   },
   data() {
     return {
       error: '',
       username: '',
-      password: '',
+      password: ''
     };
   },
   methods: {
@@ -42,24 +42,29 @@ export default {
         const response = await fetch('https://f1-shop-588b7-default-rtdb.europe-west1.firebasedatabase.app/users.json');
         const data = await response.json();
 
-        const dataArray = Object.values(data); // Convert the response data into an array
+        const dataArray = Object.values(data);
 
         const user = dataArray.find(u => u.username === this.username && u.password === this.password);
 
         if (user) {
-          // Successful login
           alert('Login successful!');
-          this.$router.push('/');
-          
+          user.LoggedIn = true; 
+          const userId = Object.keys(data).find(key => data[key].username === user.username);
+          await fetch(`https://f1-shop-588b7-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}.json`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ LoggedIn: true })
+          });
         } else {
-          // Failed login
           this.error = 'Invalid username or password';
         }
       } catch (error) {
         console.error(error);
         this.error = 'An error occurred during login: ' + error;
       }
-    },
+    }
   }
 };
 </script>
@@ -125,7 +130,9 @@ label {
 }
 
 .login-button:hover {
-  background-color: #45a049;
+ 
+
+ background-color: #45a049;
 }
 
 .error {
@@ -134,4 +141,3 @@ label {
   font-size: 14px;
 }
 </style>
-
