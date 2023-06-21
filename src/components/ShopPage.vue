@@ -11,10 +11,10 @@
       </div>
     </nav>
     <router-view/>
-    <div v-if="isLoggedIn">
+    <div v-if="LoggedIn">
       <shopping-cart :loggedInUsername="loggedInUsername" :addToCart="addToCart" v-if="loggedInUsername" />
     </div>
-    <p v-if="loggedInUsername">Logged-in username: {{ loggedInUsername }}</p>
+    <p v-if="loggedInUsername">Hallo: {{ loggedInUsername }}</p>
     <div class="products-container">
       <div v-for="product in products" :key="product.id" class="product-item">
         <img :src="product.img" alt="product image">
@@ -54,7 +54,6 @@ export default {
     return {
       showNavbar: true,
       loggedInUsername: '',
-      isLoggedIn: false,
       products: [
         { id: 1, name: 'Alonso AMF1 2023 Shirt', price: 68.95, img: Astonaloshirt },
         { id: 2, name: 'Kimoa Alonso x AMF1 Lifestyle Cap - Green', price: 44.95, img: AloCap },
@@ -84,20 +83,14 @@ export default {
     loadHome() {
       this.$router.push('/home');
     },
-    onLoginSuccess(username) {
-      this.loggedInUsername = username;
-    },
-    handleLoginSuccess(username) {
-      this.loggedInUsername = username;
-      this.isLoggedIn = true;
-    },
     addToCart(product) {
       console.log('Adding to cart:', product);
     },
     checkNavbarVisibility() {
       const hiddenRoutes = ['/login', '/signup'];
       this.showNavbar = !hiddenRoutes.includes(this.$route.path);
-    }
+    },
+    
   },
 };
 </script>

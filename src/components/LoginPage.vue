@@ -10,8 +10,8 @@
       <input type="password" id="password" v-model="password" class="input-field" placeholder="Password">
     </div>
     <button class="login-button" @click="login">Login</button>
-    <div v-if="isLoggedIn">
-      <router-link to="/about"></router-link>
+    <div v-if="LoggedIn">
+      <router-link to="/"></router-link>
     </div>
     <div v-if="error" class="error">{{ error }}</div>
   </div>
@@ -43,6 +43,12 @@ export default {
         const data = await response.json();
 
         const dataArray = Object.values(data);
+
+        const loggedInUser = dataArray.find(u => u.LoggedIn === true);
+        if (loggedInUser) {
+          this.error = 'Another user is already logged in. Please log out before logging in.';
+          return;
+        }
 
         const user = dataArray.find(u => u.username === this.username && u.password === this.password);
 
